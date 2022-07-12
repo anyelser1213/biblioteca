@@ -13,9 +13,13 @@ urlpatterns = [
     path('logout/', views.Logout.as_view() ,name="logout"),
 
 
+    #Para los libros
+    path('Libro_borrar/<int:pk>/', views.LibroEliminar.as_view() ,name="Libro_eliminar"),
+
 
     #Para pruebas
     path('pruebas/', views.pruebas ,name="pruebas"),
+    path('registrar/', views.UsuariosCrear.as_view(), name ="registrar"),  
 
     #Para las apis
     #path('probando/', views.Probando ,name="probando"),

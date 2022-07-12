@@ -65,6 +65,7 @@ class loginForm(AuthenticationForm):
 
 class UsuariosForm(UserCreationForm):
 
+
     def __init__(self, *args, **kwargs):
         #usuario_id = kwargs.pop('usuario')
         super(UsuariosForm, self).__init__(*args, **kwargs)
@@ -73,12 +74,12 @@ class UsuariosForm(UserCreationForm):
         self.fields['password1'].widget = widgets.PasswordInput(
             attrs={
                 'placeholder': 'New password',
-                'class': 'browser-default'
+                'class': ''
             })
         self.fields['password2'].widget = widgets.PasswordInput(
             attrs={
                 'placeholder': 'Repeat password',
-                'class': 'browser-default'
+                'class': ''
             })
 
      
@@ -88,7 +89,7 @@ class UsuariosForm(UserCreationForm):
         #fields = "__all__"
         #fields = ["username","nombres","apellidos","email","compañia","cedula","direccion","rol","telefono","imagen","is_superuser","admin"]
         #fields = ["username","apellidos","email","direccion","rol","telefono","imagen"]
-        fields = ["username","apellidos","email"]
+        fields = ["username","apellidos","email","is_superuser"]
         widgets = {
             #"creado_por": forms.Select(attrs={'class': 'form-control' }),
             "username": forms.TextInput(attrs={'class': 'browser-default ', 'placeholder':'Enter username' }),
@@ -128,10 +129,8 @@ class UsuariosForm(UserCreationForm):
         
         """
         validacion de contrasenas 
-
         metodo que valida que ambas contrasenas ingresadas sean iguales, esto antes de ser encriptadas
         y guardadas en la base de datos, retornar la contrasena valida.
-
         excepcions:
             ValidatorError -- cuando las contrasenas no son iguales muestra un mensaje de error
         
@@ -151,7 +150,7 @@ class UsuariosForm(UserCreationForm):
 
         if commit: 
             user.save()
-        return user
+        return 
 
 
     
